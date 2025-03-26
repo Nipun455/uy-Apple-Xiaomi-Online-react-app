@@ -4,11 +4,12 @@ import { items } from "./Data";
 import Product from "./Product";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const ProductDetail = ({ cart, setCart }) => {
   const { id } = useParams();
-
-  const [product, setProduct] = useState({});
+  console.log('product Details');
+  const [product, setProduct] = useState({}); 
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
@@ -48,6 +49,14 @@ const ProductDetail = ({ cart, setCart }) => {
 
   return (
     <>
+       <Helmet>
+                <meta charSet="utf-8" />
+                <title>{product.title}</title>
+                <meta name="description" content={product.description} />
+                <meta name="keywords" content={`best price ${product.title},`} />
+        </Helmet>
+
+
       <ToastContainer
         position="top-right"
         autoClose={1500}
